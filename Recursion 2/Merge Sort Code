@@ -1,0 +1,84 @@
+//Vijesh0405 *********************** Vijesh0405 *********************** Vijesh0405 ***********************  Vijesh0405 *********************** Vijesh0405 ************
+/***
+
+Sort an array A using Merge Sort.
+Change in the input array itself. So no need to return or print anything.
+Input format :
+Line 1 : Integer n i.e. Array size
+Line 2 : Array elements (separated by space)
+Output format :
+Array elements in increasing order (separated by space)
+Constraints :
+1 <= n <= 10^3
+Sample Input 1 :
+6 
+2 6 8 5 4 3
+Sample Output 1 :
+2 3 4 5 6 8
+Sample Input 2 :
+5
+2 1 5 2 3
+Sample Output 2 :
+1 2 2 3 5 
+
+***/
+
+
+//***********************************************************************************************************************************************
+//************************************************************ SOLUTION *************************************************************************
+//***********************************************************************************************************************************************
+
+
+public class solution {
+    
+    public static void mergeSort(int[] input,int si,int ei){
+        if(si>=ei){
+            return;
+        }
+        int mid = (si+ei)/2;
+        mergeSort(input,si,mid);
+        mergeSort(input,mid+1,ei);
+        merge(input,si,ei);
+    }
+    private static void merge(int[] input,int si,int ei){
+        int mid = (si+ei)/2;
+        int i = si;
+        int j = mid+1;
+        int k = 0;
+        int[] ans = new int[ei-si+1];
+        while(i<=mid && j<=ei){
+            if(input[i]<input[j]){
+                ans[k] = input[i];
+                i++;
+                k++;
+                
+            }
+            else{
+                ans[k] = input[j];
+                j++;
+                k++;
+            }
+        }
+        while(i<=mid){
+            ans[k] = input[i];
+            i++;
+            k++;
+        }
+        while(j<=ei){
+            ans[k] = input[j];
+            j++;
+            k++;
+        }
+        
+        // now copy ans to input array which starts from st and ends at ei at a particular time 
+        for(int ind = 0;ind<ans.length;ind++){
+            input[si+ind] = ans[ind];
+        }
+    }
+
+	public static void mergeSort(int[] input){
+		// Write your code here
+        mergeSort(input,0,input.length-1);
+		
+	}
+}
