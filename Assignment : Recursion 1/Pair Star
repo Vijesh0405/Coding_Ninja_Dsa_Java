@@ -1,0 +1,56 @@
+//Vijesh0405 *********************** Vijesh0405 *********************** Vijesh0405 ***********************  Vijesh0405 *********************** Vijesh0405 ************
+/***
+
+Given a string S, compute recursively a new string where identical chars that are adjacent in the original string are separated from each other by a "*".
+Input format :
+String S
+Output format :
+Modified string
+Constraints :
+0 <= |S| <= 1000
+where |S| represents length of string S.
+Sample Input 1 :
+hello
+Sample Output 1:
+hel*lo
+Sample Input 2 :
+aaaa
+Sample Output 2 :
+a*a*a*a
+
+***/
+
+
+//***********************************************************************************************************************************************
+//************************************************************ SOLUTION *************************************************************************
+//***********************************************************************************************************************************************
+
+
+
+public class solution {
+
+	// Return the updated string
+    private static String addStars(String s,String ans,int st){
+        if(st>=s.length()){
+            return ans;
+        }
+        if(s.charAt(st-1)==s.charAt(st)){
+            ans+="*";
+            ans+=s.charAt(st);
+            st+=1;
+        }
+        else{
+            ans+=s.charAt(st);
+            st+=1;
+        }
+        
+        return addStars(s,ans,st);
+    }
+	public static String addStars(String s) {
+        String ans ="";
+        ans+=s.charAt(0);
+		// Write your code here
+        return addStars(s,ans,1);
+
+	}
+}
