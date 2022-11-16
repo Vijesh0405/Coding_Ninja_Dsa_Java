@@ -1,0 +1,48 @@
+//Vijesh0405 *********************** Vijesh0405 *********************** Vijesh0405 ***********************  Vijesh0405 *********************** Vijesh0405 ************
+/***
+
+Check whether a given String S is a palindrome using recursion. Return true or false.
+Input Format :
+String S
+Output Format :
+'true' or 'false'
+Constraints :
+0 <= |S| <= 1000
+where |S| represents length of string S.
+Sample Input 1 :
+racecar
+Sample Output 1:
+true
+Sample Input 2 :
+ninja
+Sample Output 2:
+false
+
+***/
+
+
+//***********************************************************************************************************************************************
+//************************************************************ SOLUTION *************************************************************************
+//***********************************************************************************************************************************************
+
+
+public class solution {
+    private static boolean palindrome(String s,int st,int end){
+        if(st>=end){
+            return true;
+        }
+        if(s.charAt(st)!=s.charAt(end)){
+            return false;
+        }
+        st+=1;
+        end-=1;
+        return palindrome(s,st,end);
+        
+    }
+
+	public static boolean isStringPalindrome(String input) {
+		// Write your code here
+        return palindrome(input,0,input.length()-1);
+
+	}
+}
