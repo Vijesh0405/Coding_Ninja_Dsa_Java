@@ -1,0 +1,71 @@
+//Vijesh0405 *********************** Vijesh0405 *********************** Vijesh0405 ***********************  Vijesh0405 *********************** Vijesh0405 ************
+/***
+
+Assume that the value of a = 1, b = 2, c = 3, ... , z = 26. You are given a numeric string S. Write a program to return the list of all possible codes that can be generated from the given string.
+Note : The order of codes are not important. And input string does not contain 0s.
+Input format :
+A numeric string
+Constraints :
+1 <= Length of String S <= 10
+Sample Input:
+1123
+Sample Output:
+aabc
+kbc
+alc
+aaw
+kw
+
+***/
+
+
+//***********************************************************************************************************************************************
+//************************************************************ SOLUTION *************************************************************************
+//***********************************************************************************************************************************************
+
+
+import java.util.*;
+public class solution {
+
+	// Return a string array that contains all possible codes
+    public static  void getCod(String input,ArrayList<String> str,String out){
+        if(input.length()==0){
+            str.add(out);
+            return;
+        }
+        char c1=(char)((input.charAt(0)-48)+96);
+    
+    //Ignore the output coming from zero in a string
+    if(input.charAt(0)=='0')
+        return;
+        
+        getCod(input.substring(1),str,out+c1);
+        if(input.length()>1){
+        int d=(input.charAt(0)-48)*10+(input.charAt(1)-48);
+        if(d>26)
+            return;
+        char c2=(char)(96+d);
+        getCod(input.substring(2),str,out+c2);
+    }
+        
+		// Write your code here
+
+		
+	}
+    public static  String[] getCode(String input){
+		// Write your code here
+        ArrayList<String> str = new ArrayList<>();
+        String out = "";
+        getCod(input,str,out);
+        String[] ans = new String[str.size()];
+        for(int i=0;i<str.size();i++){
+            ans[i] = str.get(i);
+        }
+        return ans;
+
+		
+	}
+
+    
+
+}
