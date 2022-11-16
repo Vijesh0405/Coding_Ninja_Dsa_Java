@@ -1,0 +1,36 @@
+//Vijesh0405 *********************** Vijesh0405 *********************** Vijesh0405 ***********************  Vijesh0405 *********************** Vijesh0405 ************
+/***
+
+Given k, find the geometric sum i.e.
+1 + 1/2 + 1/4 + 1/8 + ... + 1/(2^k) 
+using recursion.
+Input format :
+Integer k
+Output format :
+Geometric sum (upto 5 decimal places)
+Constraints :
+0 <= k <= 1000
+
+***/
+
+
+//***********************************************************************************************************************************************
+//************************************************************ SOLUTION *************************************************************************
+//***********************************************************************************************************************************************
+
+
+public class solution {
+    private static double findGeometricSum(int k,int st,double sum){
+        if(st>k){
+            return Math.round(sum*100000)/100000.0;
+        }
+        sum+=1/Math.pow(2,st);
+        return findGeometricSum(k,st+1,sum);
+    }
+
+	public static double findGeometricSum(int k){
+		// Write your code here
+        return findGeometricSum(k,0,0);
+
+	}
+}
