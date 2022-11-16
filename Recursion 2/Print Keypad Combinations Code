@@ -1,0 +1,97 @@
+//Vijesh0405 *********************** Vijesh0405 *********************** Vijesh0405 ***********************  Vijesh0405 *********************** Vijesh0405 ************
+/***
+
+Given an integer n, using phone keypad find out and print all the possible strings that can be made using digits of input n.
+Note : The order of strings are not important. Just print different strings in new lines.
+Input Format :
+Integer n
+Output Format :
+All possible strings in different lines
+Constraints :
+1 <= n <= 10^6
+Sample Input:
+23
+Sample Output:
+ad
+ae
+af
+bd
+be
+bf
+cd
+ce
+cf
+
+***/
+
+
+//***********************************************************************************************************************************************
+//************************************************************ SOLUTION *************************************************************************
+//***********************************************************************************************************************************************
+
+
+public class solution {
+    private static String[] helper(int n){
+        
+        if(n==1){
+            String str[] = {""};
+            return str;
+        }
+        if(n==2){
+            String str[] = {"a","b","c"};
+            return str;
+        }
+        if(n==3){
+            String str[] = {"d","e","f"};
+            return str;
+        }
+        if(n==4){
+            String str[] = {"g","h","i"};
+            return str;
+        }
+        if(n==5){
+            String str[] = {"j","k","l"};
+            return str;
+        }
+        if(n==6){
+            String str[] = {"m","n","o"};
+            return str;
+        }
+        if(n==7){
+            String str[] = {"p","q","r","s"};
+            return str;
+        }
+        if(n==8){
+            String str[] = {"t","u","v"};
+            return str;
+        }
+        if(n==9){
+            String str[] = {"w","x","y","z"};
+            return str;
+        }
+        // String str[] = {""};
+        // return str;
+        else {
+            String str[] = {""};
+            return str;
+        }
+        
+    }
+	private static void printKeypad(int n,String ans){
+        if(n==0||n==1){
+            System.out.println(ans);
+            return;
+        }
+        String help[] = helper(n%10);
+        for(int i=0;i<help.length;i++){
+            printKeypad(n/10, help[i]+ans);
+        }
+        return;
+        
+    }
+
+	public static void printKeypad(int input){
+		// Write your code here
+        printKeypad(input, "");
+	}
+}
